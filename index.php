@@ -1,8 +1,6 @@
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/header.php');
-$APPLICATION->SetTitle('Главная');
 ?> 
-<?= $APPLICATION->getCurPage(false);?>
 
 <?php
 $router = new \App\Router($APPLICATION->getCurPage(false));
