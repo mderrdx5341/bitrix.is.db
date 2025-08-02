@@ -22,6 +22,7 @@ class Router
 				$routeData->setAction($ex['action']);
 				unset($args[0]);
 				$routeData->setArgs($args);
+				break;
 			} else {
 				$routeData->setController('App\Controllers\Page404');
 				$routeData->setAction('index');
