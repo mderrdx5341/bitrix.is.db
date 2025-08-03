@@ -68,4 +68,38 @@ trait IBlockElementTrait
     {
         return $this->data['DETAIL_PAGE_URL'];
     }
+
+    public function property($name)
+    {
+        if($this->properties[$name]) {
+            return $this->properties[$name];
+        }
+
+        $props = \CIBlockElement::getProperty($this->iblock->id(), $this->id());
+
+        while($prop = $props->getNext()) {     
+            if (empty($this->properties[$prop['CODE']])) {
+                if ($prop['PROPERTY_TYPE'] == 'E') {
+                    $this->properties[$prop['CODE']] = new PropertyElement($prop, $this); 
+                } else if ($prop['PROPERTY_TYPE'] == 'G') {
+                    $this->properties[$prop['CODE']] = new PropertyGroup($prop, $this); 
+                } else if ($prop['PROPERTY_TYPE'] == 'L') {
+                    $this->properties[$prop['CODE']] = new PropertyList($prop, $this);                 
+                } else {               
+                    $this->properties[$prop['CODE']] = new Property($prop, $this);
+
+                }
+            }
+
+            if ($prop['MULTIPLE'] == 'Y') {
+                if (!in_array($prop['VALUE'], $this->properties[$prop['CODE']]->valueRaw())) {
+                    $this->properties[$prop['CODE']]->addValue($prop['VALUE']);
+                    $this->properties[$prop['CODE']]->addValueEnum($prop['VALUE_ENUM']);
+                    $this->properties[$prop['CODE']]->addValueXmlId($prop['VALUE_XML_ID']);               
+                }
+            }
+        }
+
+        return $this->properties[$name];
+    }
 }

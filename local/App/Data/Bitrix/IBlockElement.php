@@ -7,11 +7,13 @@ class IBlockElement
 
     protected $data;
     protected $iblock;
+    protected $properties;
 
     public function __construct($data, $iblock = null)
     {
         $this->data = $data;
         $this->iblock = $iblock;
+        $this->properties = [];
     }
 }
 ?>

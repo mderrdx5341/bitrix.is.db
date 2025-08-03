@@ -23,6 +23,13 @@ class IBlockSection
         return $subSections;
     }
 
+    public function elements()
+    {
+        return $this->iblock->getElements([
+            'filter' => ['SECTION_ID' => $this->id()]
+        ]);
+    }
+
     public function id()
     {
         return $this->data['ID'];

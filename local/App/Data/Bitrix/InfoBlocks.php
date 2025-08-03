@@ -23,6 +23,17 @@ class InfoBlocks
         }
     }
 
+    public static function getById($id, $className = '')
+    {
+        $res = CIBlock::GetList([],['ID' => $id]);
+        $iblocks = [];
+
+        while($iblockData = $res->fetch())
+        {
+            return $className ? new $className($iblockData) : new IBlock($iblockData);
+        }
+    }
+
     public static function getByCode($code, $className = '')
     {
         $res = CIBlock::GetList([],['CODE' => $code]);
@@ -30,7 +41,7 @@ class InfoBlocks
 
         while($iblockData = $res->fetch())
         {
-            return new IBlock($iblockData);
+            return $className ? new $className($iblockData) : new IBlock($iblockData);
         }
     }
 }

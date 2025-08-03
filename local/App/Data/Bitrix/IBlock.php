@@ -42,6 +42,22 @@ class IBlock
         return $sections;
     }
 
+    public function getSectionById($id, $className = '')
+    {
+        $res = CIBlockSection::getList(
+            [],
+            ['IBLOCK_ID' => $this->id(), 'ID' => $id],
+            false,
+            []
+        );
+        $section = null;
+        while($sectionData = $res->getNext()) {
+            $section = $className ? new $className($sectionData, $this) : new IBlockSection($sectionData, $this);
+        }
+
+        return $section;
+    }
+
     public function getSectionByCode($code, $className = '')
     {
         $res = CIBlockSection::getList(
@@ -75,6 +91,26 @@ class IBlock
         }
 
         return $items;
+    }
+
+    public function getElementById($id, $className = '')
+    {
+        $res = CIBlockElement::getList(
+            [],
+            ['IBLOCK_ID' => $this->id(), 'ID' => $id],
+            false,
+            false,
+            []
+        );
+
+        $news = null;
+        while ($item = $res->getNext())
+        {
+
+            $news = $className ? new $className($item, $this) : new IBlockElement($item, $this);
+        }
+
+        return $news;
     }
 
     public function getElementByCode($code, $className = '')
