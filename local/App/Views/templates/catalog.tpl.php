@@ -1,5 +1,5 @@
 <?php foreach($categories as $category) { ?>
-    <div>
+    <div id="<?= $category->editAreaId() ?>">
         <h2><?= $category->title() ?></h2>
         <a href="<?= $category->url() ?>">Подробнее</a>
         <ul>

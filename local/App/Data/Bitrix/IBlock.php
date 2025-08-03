@@ -36,7 +36,7 @@ class IBlock
         );
         $sections = [];
         while($section = $res->getNext()) {
-            $sections[] = new IBlockSection($section, $this);
+            $sections[] = $className ? new $className($section, $this) : new IBlockSection($section, $this);
         }
 
         return $sections;
@@ -52,7 +52,7 @@ class IBlock
         );
         $section = null;
         while($sectionData = $res->getNext()) {
-            $section = new IBlockSection($sectionData, $this);
+            $section = $className ? new $className($sectionData, $this) : new IBlockSection($sectionData, $this);
         }
 
         return $section;
@@ -95,5 +95,24 @@ class IBlock
         }
 
         return $news;
+    }
+
+    public function editAreaId()
+    {
+        global $APPLICATION;
+        $code = $this->code();
+        $editAreaId = "bx_mderrdx_iblock_{$code}_".microtime(true);
+        $buttons = \CIBlock::GetPanelButtons($this->Id(), 0, 0, array("SECTION_BUTTONS" => false, "SESSID" => false));
+		$addUrl = $buttons["edit"]["add_element"]["ACTION_URL"];
+        $addPopup = $APPLICATION->getPopupLink(['URL' => $addUrl, "PARAMS" => ['width' => 780, 'height' => 500]]);
+        $btn = array(
+			'URL' => "javascript:{$addPopup}",
+			'TITLE' => 'Добавить элемент',
+			'ICON' => 'bx-context-toolbar-add-icon',
+		);
+
+		$APPLICATION->SetEditArea($editAreaId, array($btn));
+
+		return $editAreaId;
     }
 }

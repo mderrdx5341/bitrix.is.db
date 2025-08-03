@@ -3,17 +3,22 @@ namespace App\Data\Bitrix;
 
 trait IBlockElementTrait
 {
+    public function iblock()
+    {
+        return $this->iblock;
+    }
+    
     public function editAreaId()
     {
         global $APPLICATION;
-        $editAreaId = "bx_tao_entity_{$this->iblock->id()}_{$this->id()}";
+        $editAreaId = "bx_mderrdx_iblockelement_{$this->iblock->id()}_{$this->id()}_".microtime(true);
         $buttons = \CIBlock::GetPanelButtons(
             $this->iblock->id(),
             $this->id()
         );
         $editUrl = $buttons["edit"]["edit_element"]["ACTION_URL"];
         $deleteUrl = $buttons["edit"]["delete_element"]["ACTION_URL"] . '&' . bitrix_sessid_get();
-        $editPopup = $APPLICATION->getPopupLink(array('URL' => $editUrl, "PARAMS" => array('width' => 780, 'height' => 500)));
+        $editPopup = $APPLICATION->getPopupLink(['URL' => $editUrl, "PARAMS" => ['width' => 780, 'height' => 500]]);
 
         $btn = array(
 			'URL' => "javascript:{$editPopup}",
@@ -24,7 +29,7 @@ trait IBlockElementTrait
         $APPLICATION->SetEditArea($editAreaId, array($btn));
 
         $btn = array(
-			'URL' => 'javascript:if(confirm(\'' . \CUtil::JSEscape("Удалить") . '\')) jsUtils.Redirect([], \'' . \CUtil::JSEscape($deleteUrl) . '\');',
+			'URL' => 'javascript:if(confirm(\'' . \CUtil::JSEscape("Удалить?") . '\')) jsUtils.Redirect([], \'' . \CUtil::JSEscape($deleteUrl) . '\');',
 			'TITLE' => 'Удалить',
 			'ICON' => 'bx-context-toolbar-delete-icon',
 		);
