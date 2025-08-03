@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Data;
+namespace App\Data\Bitrix;
 
 use \Bitrix\Main\Loader;
 use CIBlock;

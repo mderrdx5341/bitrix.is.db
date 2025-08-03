@@ -1,5 +1,5 @@
 <?php
-namespace App\Data;
+namespace App\Data\Bitrix;
 
 trait IBlockElementTrait
 {

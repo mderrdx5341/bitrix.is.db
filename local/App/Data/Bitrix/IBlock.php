@@ -1,5 +1,5 @@
 <?php
-namespace App\Data;
+namespace App\Data\Bitrix;
 
 use \Bitrix\Main\Loader;
 use CIBlockElement;
@@ -60,7 +60,6 @@ class IBlock
 
     public function getElements($args, $className ='')
     {
-        $class = $className ? $className : '\App\Data\IBlockElement';
         $res = CIBlockElement::getList(
             [],
             array_merge(['IBLOCK_ID' => $this->id()], $args['filter']),
@@ -72,7 +71,7 @@ class IBlock
         $items = [];
         while ($item = $res->getNext())
         {
-            $items[] = new $class($item, $this);
+            $items[] = $className ? new $className($item, $this) : new IBlockElement($item, $this);
         }
 
         return $items;
@@ -80,7 +79,6 @@ class IBlock
 
     public function getElementByCode($code, $className = '')
     {
-        $class = $className ? $className : '\App\Data\IBlockElement';
         $res = CIBlockElement::getList(
             [],
             ['IBLOCK_ID' => $this->id(), 'CODE' => $code],
@@ -93,7 +91,7 @@ class IBlock
         while ($item = $res->getNext())
         {
 
-            $news = new $class($item, $this);
+            $news = $className ? new $className($item, $this) : new IBlockElement($item, $this);
         }
 
         return $news;

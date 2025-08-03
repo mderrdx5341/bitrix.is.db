@@ -2,7 +2,7 @@
 namespace App\Data\Models;
 
 use App\Models;
-use App\Data\IBlockElementTrait;
+use App\Data\Bitrix\IBlockElementTrait;
 
 class News extends Models\News
 {

@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Data\InfoBlocks;
+use App\Data\Bitrix\InfoBlocks;
 use App\Views\Template;
 
 class Catalog
