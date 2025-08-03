@@ -1,5 +1,5 @@
 <div>
-    <h2><?= $newsItem->titleAndDate() ?></h2>
+    <h2><?= $newsItem->titleWithDate() ?></h2>
     <div><?= $newsItem->detailText() ?></div>
 </div>
 <div>

@@ -6,7 +6,7 @@ foreach ($news as $item)
             <h2><?= $item->title() ?></h2>
             <div><?= $item->date() ?></div>
             <div><?= $item->previewText() ?></div>
-            <a href="<?= $item->link() ?>">Подробнее</a>
+            <a href="<?= $item->url() ?>">Подробнее</a>
         </div>
     <?
 }

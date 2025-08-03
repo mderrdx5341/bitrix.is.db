@@ -23,7 +23,7 @@ class InfoBlocks
         }
     }
 
-    public static function getByCode($code)
+    public static function getByCode($code, $className = '')
     {
         $res = CIBlock::GetList([],['CODE' => $code]);
         $iblocks = [];

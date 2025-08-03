@@ -21,7 +21,7 @@ class News
     {
         $iblock = InfoBlocks::getByCode('NEWS');
 
-        $news = $iblock->getElementByCode($code);
+        $news = $iblock->getElementByCode($code, '\\App\\Data\\Models\\News');
 
         $template = new Template('news-item', ['newsItem' => $news]);
         return $template->render();

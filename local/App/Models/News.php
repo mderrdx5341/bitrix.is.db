@@ -5,7 +5,7 @@ abstract class News
 {
     public abstract function title(): string;
     public abstract function date():string ;
-    public function titleAndDate()
+    public function titleWithDate()
     {
         return $this->title() . ': ' . $this->date();
     }

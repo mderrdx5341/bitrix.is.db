@@ -5,8 +5,8 @@ class IBlockElement
 {
     use IBlockElementTrait;
 
-    private $data;
-    private $iblock;
+    protected $data;
+    protected $iblock;
 
     public function __construct($data, $iblock = null)
     {

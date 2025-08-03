@@ -15,13 +15,16 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 		</div>
         <div>
             <header class="header-main">
-                <div class="menu">
+                <nav class="menu">
                     <ul>
                         <li>
                             <a href="/news/">Новости</a>
                         </li>
+                        <li>
+                            <a href="/catalog/">Каталог</a>
+                        </li>
                     </ul>
-                </div>
+                </nav>
             </header>
             <main>
         

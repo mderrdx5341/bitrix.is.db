@@ -3,6 +3,7 @@ namespace App\Data;
 
 use \Bitrix\Main\Loader;
 use CIBlockElement;
+use CIBlockSection;
 
 Loader::includeModule('iblock');
 
@@ -15,15 +16,6 @@ class IBlock
         $this->data = $data;
     }
 
-    private function classesForElements()
-    {
-        $nameModel = ucfirst(strtolower($this->code()));
-        return [
-            '\\Models\\'. $nameModel,
-            '\\IBlockElement'
-        ];
-    }
-
     public function id()
     {
         return $this->data['ID'];
@@ -34,19 +26,41 @@ class IBlock
         return $this->data['CODE'];
     }
 
-    protected function getClass()
+    public function getSections($args, $className = '')
     {
-        foreach ($this->classesForElements() as $class) {
-
-            if(is_file(__DIR__ . $class . '.php')) {
-                return '\\App\\Data' . $class;
-            }
+        $res = CIBlockSection::getList(
+            [],
+            array_merge(['IBLOCK_ID' => $this->id()], $args['filter']),
+            false,
+            []
+        );
+        $sections = [];
+        while($section = $res->getNext()) {
+            $sections[] = new IBlockSection($section, $this);
         }
+
+        return $sections;
     }
 
-    public function getElements($args)
+    public function getSectionByCode($code, $className = '')
     {
-        $class = $this->getClass();
+        $res = CIBlockSection::getList(
+            [],
+            ['IBLOCK_ID' => $this->id(), 'CODE' => $code],
+            false,
+            []
+        );
+        $section = null;
+        while($sectionData = $res->getNext()) {
+            $section = new IBlockSection($sectionData, $this);
+        }
+
+        return $section;
+    }
+
+    public function getElements($args, $className ='')
+    {
+        $class = $className ? $className : '\App\Data\IBlockElement';
         $res = CIBlockElement::getList(
             [],
             array_merge(['IBLOCK_ID' => $this->id()], $args['filter']),
@@ -64,9 +78,9 @@ class IBlock
         return $items;
     }
 
-    public function getElementByCode($code)
+    public function getElementByCode($code, $className = '')
     {
-        $class = $this->getClass();
+        $class = $className ? $className : '\App\Data\IBlockElement';
         $res = CIBlockElement::getList(
             [],
             ['IBLOCK_ID' => $this->id(), 'CODE' => $code],

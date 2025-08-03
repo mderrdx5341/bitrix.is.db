@@ -59,7 +59,7 @@ trait IBlockElementTrait
         return $this->data['DETAIL_TEXT'];
     }
 
-    public function link()
+    public function url()
     {
         return $this->data['DETAIL_PAGE_URL'];
     }
