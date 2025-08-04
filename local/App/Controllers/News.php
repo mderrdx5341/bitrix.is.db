@@ -1,8 +1,11 @@
 <?php
 namespace App\Controllers;
 
-use App\Data\Bitrix\InfoBlocks;
+use Bitrix\Main\Loader;
+use Mderrdx\InfoBlocks\InfoBlocks;
 use App\Views\Template;
+
+Loader::includeModule('mderrdx.infoblocks');
 
 class News
 {

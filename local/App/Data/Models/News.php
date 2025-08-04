@@ -1,8 +1,11 @@
 <?php
 namespace App\Data\Models;
 
+use Bitrix\Main\Loader;
+use Mderrdx\Infoblocks\IBlockElementTrait;
 use App\Models;
-use App\Data\Bitrix\IBlockElementTrait;
+
+Loader::includeModule('mderrdx.infoblocks');
 
 class News extends Models\News
 {
