@@ -6,6 +6,7 @@ class RouteData
     private string $controller;
     private string $action;
     private array $args;
+    private bool $withOutTemplate = false;
 
     public function __construct(){
         $this->controller = '';
@@ -41,5 +42,15 @@ class RouteData
     public function args()
     {
         return $this->args;
+    }
+
+    public function setWithOutTemplate($flag)
+    {
+        $this->withOutTemplate = $flag;
+    }
+
+    public function withOutTemplate() : bool
+    {
+        return $this->withOutTemplate;
     }
 }

@@ -22,6 +22,9 @@ class Router
 				$routeData->setAction($ex['action']);
 				unset($args[0]);
 				$routeData->setArgs($args);
+				if (isset($ex['template']) && $ex['template'] === false) {
+					$routeData->setWithOutTemplate(true);
+				}
 				break;
 			} else {
 				$routeData->setController('App\Controllers\Page404');

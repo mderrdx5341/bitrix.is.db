@@ -63,7 +63,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.scss */ "./src/App.scss");
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('main.page');
+  console.log('run app');
 });
 })();
 
