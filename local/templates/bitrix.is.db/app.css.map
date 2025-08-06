@@ -1,0 +1,1 @@
+{"version":3,"file":"app.css","mappings":";;;AAAA;EACI;EACA;ACCJ,C","sources":["webpack://carts/./src/blocks/body.scss","webpack://carts/./src/App.scss"],"sourcesContent":["html, body {\r\n    margin: 0;\r\n    padding: 0;\r\n}","html, body {\n  margin: 0;\n  padding: 0;\n}"],"names":[],"sourceRoot":""}
