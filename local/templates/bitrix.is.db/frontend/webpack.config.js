@@ -17,7 +17,8 @@ module.exports = {
         })*/
 	],
 	entry: {
-		app: path.resolve(__dirname, './src/main.js'),
+        'main.page': path.resolve(__dirname, './src/main.page.js'),
+		app: path.resolve(__dirname, './src/app.js'),
 	},
     devtool: 'source-map',
     mode: "development", //production, development
