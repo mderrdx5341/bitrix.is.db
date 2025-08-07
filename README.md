@@ -8,3 +8,4 @@
 
 ### dependencies:
 - [mderrdx.infoblock](https://github.com/mderrdx5341/mderrdx.infoblocks)
+- [mderrdx.hlblock](https://github.com/mderrdx5341/mderrdx.hlblock)
