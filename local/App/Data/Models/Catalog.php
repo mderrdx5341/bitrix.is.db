@@ -4,8 +4,9 @@ namespace App\Data\Models;
 use Bitrix\Main\Loader;
 
 Loader::includeModule('mderrdx.infoblocks');
+use Mderrdx\Infoblocks\IBlock;
 
-class Catalog
+class Catalog extends IBlock
 {
 
 }
