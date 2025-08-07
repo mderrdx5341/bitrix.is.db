@@ -4,7 +4,7 @@ $arUrlRewrite = [
         'CONDITION' => '#^/.*#',
         'RULE' => '',
         'ID' => NULL,
-        'PATH' => '/my_routing/index.php',
+        'PATH' => '/my_routing/index.php', //перевод говорит сам за себя)) надо my way
         'SORT' => 100,
     ],
 ];
