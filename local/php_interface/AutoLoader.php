@@ -14,10 +14,11 @@ class AutoLoader
 
 	private function autoLoadClasses(string $name) {
 		$tmp = explode('\\', $name);
-		$className = array_pop($tmp);
 		if ($tmp[0] !== 'App') {
 			return;
 		}
+		$className = array_pop($tmp);
+
 		$pathDir = '/';
 		foreach ($tmp as $dir) {
 			$pathDir .=  $dir . '/';
