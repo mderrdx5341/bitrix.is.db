@@ -1,12 +1,6 @@
 <?php
 namespace App\Controllers;
 
-use Bitrix\Main\Loader;
-use Mderrdx\Infoblocks\IBlock;
-use Mderrdx\Infoblocks\IBlockContainer;
-
-Loader::includeModule('mderrdx.infoblocks');
-
 class Calculator extends AbstractController
 {
     public function sumAandB()
