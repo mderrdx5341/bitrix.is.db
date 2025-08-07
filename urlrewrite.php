@@ -1,11 +1,10 @@
 <?php
-$arUrlRewrite=array (
-  0 => 
-  array (
-    'CONDITION' => '#^/.*#',
-    'RULE' => '',
-    'ID' => NULL,
-    'PATH' => '/index.php',
-    'SORT' => 100,
-  ),
-);
+$arUrlRewrite = [
+    0 => [ //Это конечно можно добавить в конец массива, если другие правила(компоненты) не сработают, то бешаная логика
+        'CONDITION' => '#^/.*#',
+        'RULE' => '',
+        'ID' => NULL,
+        'PATH' => '/index.php',
+        'SORT' => 100,
+    ],
+];
