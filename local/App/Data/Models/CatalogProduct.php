@@ -12,4 +12,9 @@ class CatalogProduct extends IBlockElement
     {
         return $this->name();
     }
+
+    public function priceWithDiscount()
+    {
+        echo 'TODO: not implemented'
+    }
 }

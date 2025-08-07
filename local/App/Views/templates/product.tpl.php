@@ -3,8 +3,8 @@
 <p><?= $product->detailText() ?></p>
 <p>Авторы:
     <ul>
-    <?php foreach ($product->property('AUTHOR')->value() as $value) { ?>
-        <li><?= $value->title() ?></li>
+    <?php foreach ($product->property('AUTHOR')->value() as $author) { ?>
+        <li><?= $author->title() ?></li>
     <?php } ?>
     </ul>
 
@@ -16,10 +16,11 @@
 <p>Упаковка: <?= $product->property('PACKAGE')->value() ?></p>
 <p>Подкатегории:
     <ul>
-    <?php foreach ($product->property('SUB_CATEGORIES')->value() as $value) { ?>
-        <li><?= $value ?></li>
+    <?php foreach ($product->property('SUB_CATEGORIES')->value() as $subCategories) { ?>
+        <li><?= $subCategories ?></li>
     <?php } ?>
     </ul>
 </p>
 <p>Цена: <?= $product->property('PRICE')->value() ?></p>
+<p>Цена: <?= $product->priceWithDiscount() ?></p>
 
