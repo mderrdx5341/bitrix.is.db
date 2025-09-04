@@ -1,5 +1,6 @@
 #исключаем фронтенд
 node_modules/
+/local/vendor/
 #исключаю свои модули
 /local/modules/mderrdx.*
 # Исключаем bitrix/
